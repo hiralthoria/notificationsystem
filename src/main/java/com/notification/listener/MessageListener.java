@@ -39,9 +39,7 @@ public class MessageListener implements Runnable {
 					MessageSender s = connPool.getSender(e.getChannel());
 					
 					// invoke the actual 'send' action on the sender
-					synchronized(s) {
-						s.send(queue.getNextNotification().getNotification());	
-					}
+					s.send(queue.getNextNotification().getNotification());	
 				} else {
 					// sleep if the queue is empty
 					Thread.sleep(1000);
